@@ -1,5 +1,6 @@
 #include <cstdint>
 #include <complex>
+#include <numbers>
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -36,7 +37,13 @@ struct Point {
 
 
 int main(int argc, char** argv) {
+    using namespace std::complex_literals;
+    using namespace std::numbers;
     size_t n, m;
+    std::vector<cx> poly = {1, 0, 0, -1};
+    std::vector<cx> roots = {1, pow(e_v<cx>, 1il * pi_v<cx> * 2.0l / 3.0l), pow(e_v<cx>, 1il * pi_v<cx> * 4.0l / 3.0l)};
+    std::vector<uint32_t> r_colors = {0xFF0000, 0x00FF00, 0x0000FF};
+    
     if (argc >= 2) {
         n = atoi(argv[1]);
     } else {
